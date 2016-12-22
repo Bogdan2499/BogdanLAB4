@@ -2,7 +2,7 @@
 #include <conio.h>
 using namespace std;
 //####################################
-class transport
+class transport    //CLASS GENERAL
 {
 public:
 	virtual void out()=0;
@@ -16,81 +16,79 @@ public:
 	{
 		cout << "- вага: "<< weight << endl;
 		cout << "- кiлькiсть мiсць: "<< seats << endl;
-		  	}
-
-
-
-
-  	};
+	}
+};
 
 
 //####################################
-class privat: public transport
+class privat: public transport      //SUBCLASS
 {
 public:
 
-void get(){
-cout << "¬ага: ";
-cin >> weight;
-cout << " iлькiсть мiсць: ";
-cin >> seats;
-
-}
+void get()
+	{
+		cout << "¬ага: ";
+		cin >> weight;
+		cout << " iлькiсть мiсць: ";
+		cin >> seats;
+	}
 };
 
 class publ: public transport
 {
-public:
- virtual void out() = 0;
- double price;
- int standPlaces;
-
-void get(){
-cout << "¬ведiть вагу: ";
-cin >> weight;
-cout << "¬ведiть кiлькiсть мiсць дл€ сидiнн€: ";
-cin >> seats;
- cout << "¬ведiть цiну за проњзд: ";
- cin >> price;
- cout << "¬ведiть кiлькiсть мiсць дл€ сто€нн€: ";
- cin >> standPlaces;
-
-
-}
+	public:
+	virtual void out() = 0;
+	double price;
+	int standPlaces;
+	
+	void get()
+	{
+		cout << "¬ведiть вагу: ";
+		cin >> weight;
+		cout << "¬ведiть кiлькiсть мiсць дл€ сидiнн€: ";
+		cin >> seats;
+		cout << "¬ведiть цiну за проњзд: ";
+		cin >> price;
+		cout << "¬ведiть кiлькiсть мiсць дл€ сто€нн€: ";
+		cin >> standPlaces;
+	}
 };
-//####################################
+
+
 class avto: public privat
 {
-public:
+	public:
 	void out()
 	{
 	
 	}
 };
 
-class vavto: public privat
+
+class vavto: public privat //CLASS PRIVATE AUTO
 {
-public:
- double maxWeight;
-	void get(){
-         cout << "¬ведiть вагу транспорту: ";
- cin >> weight;
-
- cout << "¬ведiть кiлькiсть мiсць: ";
- cin >> seats;
-
- cout << "¬ведiть максимальну вагу вантажу: ";
- cin >> maxWeight;
- }
+	public:
+	double maxWeight;
+	void get()
+	{
+        cout << "¬ведiть вагу транспорту: ";
+		cin >> weight;
+ 		cout << "¬ведiть кiлькiсть мiсць: ";
+ 		cin >> seats;
+		cout << "¬ведiть максимальну вагу вантажу: ";
+		cin >> maxWeight;
+	}
+	
 	void out()
 	{
- cout << "- вантажопiдйомнiсть: " << maxWeight << endl;
+ 		cout << "- вантажопiдйомнiсть: " << maxWeight << endl;
 	}
 };
 
+
 class lavto: public privat
 {
-public:
+	public:
 	void out()
 	{
 		cout<<"3.Ћегковий автомобiль\n";
@@ -100,42 +98,41 @@ public:
 
 class bus: public publ
 {
-public:
+	public:
 	void out()
 	{
- cout << "- цiна за проњзд: " << price << endl;
- cout << "- мiсц€ дл€ сто€чих: " << standPlaces << endl;
+ 		cout << "- цiна за проњзд: " << price << endl;
+ 		cout << "- мiсц€ дл€ сто€чих: " << standPlaces << endl;
 	}
-
 };
+
 
 class tbus: public publ
 {
-public:
+	public:
 	void out()
 	{
- cout << "- цiна за проњзд: " << price << endl;
- cout << "- мiсц€ дл€сто€чих: " << standPlaces << endl;
+ 		cout << "- цiна за проњзд: " << price << endl;
+ 		cout << "- мiсц€ дл€сто€чих: " << standPlaces << endl;
 	}
-
 };
+
 
 class tram: public publ
 {
-public:
+	public:
 	void out()
 	{
- cout << "- цiна за проњзд: " << price << endl;
- cout << "- мiсц€ дл€сто€чих: " << standPlaces << endl;
+		 cout << "- цiна за проњзд: " << price << endl;
+		 cout << "- мiсц€ дл€сто€чих: " << standPlaces << endl;
 	}
-
 };
 
 
 int main()
- {
+{
     int t;
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "Russian");  //INTRODUCTION  OF CARS
 /*
 	avto *a=new avto;
 	vavto *va=new vavto;
@@ -145,7 +142,6 @@ int main()
 	tram *tr=new tram;
 */
 	transport *mas[6];
-
 	mas[1]=new avto;
 	mas[2]=new vavto;
 	mas[3]=new lavto;
@@ -153,14 +149,13 @@ int main()
 	mas[5]=new tbus;
 	mas[7]=new tram;
    // mas[7]=new tram2;
-
- cout << "“ранспортнi засоби: \n";
- cout << " 1. јвтомобiль\n";
- cout << " 2. ¬антажний автомобiль\n";
- cout << " 3. Ћегковий автомобiль\n";
- cout << " 4. јвтобус\n";
- cout << " 5. “ролейбус\n";
- cout << " 6. “рамвай\n";
+	cout << "“ранспортнi засоби: \n"; //CAR OUTPUT
+	cout << " 1. јвтомобiль\n";
+	cout << " 2. ¬антажний автомобiль\n";
+	cout << " 3. Ћегковий автомобiль\n";
+	cout << " 4. јвтобус\n";
+	cout << " 5. “ролейбус\n";
+	cout << " 6. “рамвай\n";
 
 
 	cout << endl;
@@ -176,4 +171,4 @@ int main()
 
 	getch();
     return 0;
- }
+}
